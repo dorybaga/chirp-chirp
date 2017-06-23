@@ -16,24 +16,40 @@ var counter = {
 };
 
 function countLetters(counter, sample_text){
-  if(sample_text.length === 0){
-    return counter;
-  }
+  // if(sample_text.length === 0){
+  //   console.log("is this working");
+  //   return counter;
+  // }
 
-    var keysArr = Object.keys(counter);
-    var textArr = sample_text.split("");
-    console.log(keysArr);
-    console.log(textArr);
+  //   var keysArr = Object.keys(counter);
+  //   var textArr = sample_text.split("");
+  //   var counterVal = Object.values(counter);
 
-    for (var k = 0; k < keysArr.length; k++){
-      for (var t = 0; t < textArr.length; t++){
-        if (keysArr[k] === textArr[t]){
-          // increment keysArr[i] +1
-          console.log(keysArr[k]);
-          // return keysArr[k]++;
-        }
-      }
-    }
+  //   // var letterCount = [];
+
+  //   // console.log(keysArr);
+  //   // console.log(textArr);
+  //   // console.log(Object.values(counter));
+
+  //   for (var k = 0; k < keysArr.length; k++){
+  //     for (var t = 0; t < textArr.length; t++){
+  //       if (keysArr[k] === textArr[t]){
+  //         // console.log(keysArr[k]);
+  //         counterVal[k]++;
+
+  //         // access counter key at that position and push +1??
+  //         console.log(keysArr[k], counterVal[k]);
+
+
+  //         // counter++
+  //         // letterCount.push(keysArr[k]);
+  //         // console.log(letterCount);
+
+
+  //         // return keysArr[k];
+  //       }
+  //     }
+  //   }
 
     // console.log(sample_text[0]);
     // console.log(sample_text[1]);          // gives me the letter in sample_text at specified position
@@ -45,21 +61,51 @@ function countLetters(counter, sample_text){
   // console.log(counter);
   // console.log(Object.keys(counter));
 
-}
 
-// function countLetters(counter, text){
-//   console.log(text);
-//   if(text.length === 0){
-//     return counter;
-//   }
+// method 1 (parse as an array) ------------------------------------------------------------
 
-//   counter[text[0]] += 1;
+// // set up base case
 
-//   return countLetters(counter, text.slice(1, text.length));
+// if(sample_text.length === 0){
+//   return counter;
 // }
 
-// var result = countLetters(counter, 'wuuuut');
-// console.log(result);
+// // decide how to parse sample_text; currently a is a string
+// // parse it as an array
+
+// var textArr = sample_text.split('');
+
+// // how to draw connection between a character and the counter
+
+// if (counter.hasOwnProperty(sample_text[0].toLowerCase())){
+//   counter[sample_text[0]]++;
+// }
+//   return countLetters(counter, sample_text.slice(1, sample_text.length).join());
+
+
+// method 2 (parse as a string) ------------------------------------------------------------
+
+
+// set up base case
+
+if(sample_text.length === 0){
+  return;
+}
+
+// decide how to parse sample_text; currently a is a string
+// parse it as a string
+
+sample_text = sample_text.toLowerCase();
+
+// starting at the end and going to the beginning; if a letter or key is in the counter
+
+if (counter.hasOwnProperty(sample_text[sample_text.length - 1])){
+  counter[sample_text[sample_text.length - 1]]++;
+}
+
+return countLetters(counter, sample_text.slice(0, --sample_text.length));
+
+}
 
 
 $(document).ready(function(){
