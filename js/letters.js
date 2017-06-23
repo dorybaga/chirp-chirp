@@ -13,13 +13,57 @@ var counter = {
   "q" : 0,  "r" : 0,  "s" : 0,  "t" : 0,
   "u" : 0,  "v" : 0,  "w" : 0,  "x" : 0,
   "y" : 0,  "z" : 0
-}
+};
 
 function countLetters(counter, sample_text){
-  // FIX ME
+  if(sample_text.length === 0){
+    return counter;
+  }
+
+    var keysArr = Object.keys(counter);
+    var textArr = sample_text.split("");
+    console.log(keysArr);
+    console.log(textArr);
+
+    for (var k = 0; k < keysArr.length; k++){
+      for (var t = 0; t < textArr.length; t++){
+        if (keysArr[k] === textArr[t]){
+          // increment keysArr[i] +1
+          console.log(keysArr[k]);
+          // return keysArr[k]++;
+        }
+      }
+    }
+
+    // console.log(sample_text[0]);
+    // console.log(sample_text[1]);          // gives me the letter in sample_text at specified position
+    // console.log(Object.keys(counter)[0]); // gives me the key from the counter at specified position
+    // console.log(Object.keys(counter)[1]);
+    // console.log(Object.keys(counter));    // array of the keys
+
+  // console.log(sample_text.split(""));
+  // console.log(counter);
+  // console.log(Object.keys(counter));
+
 }
+
+// function countLetters(counter, text){
+//   console.log(text);
+//   if(text.length === 0){
+//     return counter;
+//   }
+
+//   counter[text[0]] += 1;
+
+//   return countLetters(counter, text.slice(1, text.length));
+// }
+
+// var result = countLetters(counter, 'wuuuut');
+// console.log(result);
+
 
 $(document).ready(function(){
   countLetters(counter, sample_text);
   $("#result").html(JSON.stringify(counter));
 });
+
